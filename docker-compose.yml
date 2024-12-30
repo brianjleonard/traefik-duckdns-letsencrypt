@@ -1,14 +1,12 @@
-version: "3"
-
 services:
   traefik:
-    image: traefik:v2.9.6
+    image: traefik:v3.2.3
     container_name: traefik
     restart: always
     command:
       # Debug Properties
-      #- "--log.level=DEBUG"
-      #- "--api.insecure=true"
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
       # Common Properties
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -26,7 +24,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
+      - "8080:8080" 
     environment:
       - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
     labels:
